@@ -28,7 +28,7 @@ script 'install-haskell-7.0.3' do
   cwd '/tmp'
   code <<-EOS
   tar xfj haskell-7.0.3.tar.bz2
-  cd /tmp/ghc-7.0.3
+  cd /tmp/ghc-*
   ./configure
   make install
   EOS
