@@ -1,6 +1,8 @@
 
 require_recipe 'python'
 require_recipe 'mysql::server'
+require_recipe 'postgresql::server'
+require_recipe 'postgresqldev'
 
 package 'libmysqlclient-dev'
 
@@ -17,6 +19,10 @@ python_pip 'Flask-Coffee' do
 end
 
 python_pip 'MySQL-python' do
+  action :install
+end
+
+python_pip 'psycopg2' do
   action :install
 end
 
