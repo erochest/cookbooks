@@ -1,0 +1,9 @@
+
+-- Create Omeka DB.
+CREATE DATABASE lap CHARACTER SET = 'utf8' COLLATE = 'utf8_unicode_ci';
+-- Create Omeka user and grant privileges.
+CREATE USER 'w_lap'@'localhost' IDENTIFIED BY 'w_lap';
+CREATE USER 'w_lap'@'%' IDENTIFIED BY 'w_lap';
+GRANT ALL PRIVILEGES ON lap.* TO 'w_lap'@'localhost';
+GRANT ALL PRIVILEGES ON lap.* TO 'w_lap'@'%';
+
