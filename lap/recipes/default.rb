@@ -5,6 +5,7 @@ require_recipe 'postgresql::server'
 require_recipe 'postgresqldev'
 
 package 'libmysqlclient-dev'
+package 'sqlite3'
 
 python_pip 'Flask' do
   action :install
@@ -38,6 +39,10 @@ python_pip 'Flask-Testing' do
   action :install
 end
 
+python_pip 'blinker' do
+  action :install
+end
+
 template '/tmp/create_lap_db.sql' do
   source 'create_lap_db.sql.erb'
   action :create
@@ -47,5 +52,4 @@ execute 'create-lap-db' do
   command "mysql -hlocalhost -uroot -p#{node.mysql.server_root_password} mysql < /tmp/create_lap_db.sql"
   action :run
 end
-
 
