@@ -11,36 +11,23 @@ python_pip 'Flask' do
   action :install
 end
 
-python_pip 'Flask-Compass' do
-  action :install
-end
+EXTENSIONS = ['Flask-Assets',
+              'Flask-Compass',
+              'Flask-Coffee',
+              'flask-csrf',
+              'Flask-DebugToolbar',
+              # 'Flask-Login',
+              'MySQL-python',
+              'psycopg2',
+              'SQLAlchemy',
+              'Flask-SQLAlchemy',
+              'Flask-Testing',
+              'blinker']
 
-python_pip 'Flask-Coffee' do
-  action :install
-end
-
-python_pip 'MySQL-python' do
-  action :install
-end
-
-python_pip 'psycopg2' do
-  action :install
-end
-
-python_pip 'SQLAlchemy' do
-  action :install
-end
-
-python_pip 'Flask-SQLAlchemy' do
-  action :install
-end
-
-python_pip 'Flask-Testing' do
-  action :install
-end
-
-python_pip 'blinker' do
-  action :install
+EXTENSIONS.each do |ext|
+  python_pip ext do
+    action :install
+  end
 end
 
 template '/tmp/create_lap_db.sql' do
